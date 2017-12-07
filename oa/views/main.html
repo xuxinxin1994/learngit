@@ -1,0 +1,314 @@
+<% include ./p-views/header.html %>
+    <style>
+        .main-content {
+            text-align: center;
+        }
+        
+        .main-content .center {
+            width: 500px;
+            margin: 0px auto;
+            padding-top: 50px;
+        }
+        
+        .main-content .center>div {
+            margin-bottom: 50px;
+        }
+        
+        .main-content .center-top img {
+            width: 100%;
+        }
+        
+        .main-content .center .center-bottom {
+            position: relative;
+            height: 60px;
+        }
+        
+        .main-content .center .center-bottom span,
+        .main-content .center .center-bottom input {
+            position: absolute;
+        }
+        
+        .main-content .center .center-bottom input {
+            width: 435px !important;
+        }
+        
+        .main-content .center .center-bottom span {
+            right: 0px;
+            cursor: pointer;
+        }
+        
+        .main .center-f li {
+            list-style: none;
+            width: 110px;
+            height: 110px;
+            float: left;
+            margin: 3.5px;
+            margin-bottom: 10px;
+        }
+        
+        .main .center-f li a {
+            text-decoration: none;
+        }
+        
+        .main .center-f li div:first-child {
+            height: 30px;
+            background-color: #727272;
+            color: white;
+            font-size: 16px;
+            line-height: 30px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .main .center-f li div:first-child+div {
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: #E4E4E4;
+            height: 60px;
+            line-height: 60px;
+        }
+        
+        .main .center-f li div:first-child+div:hover {
+            color: red;
+        }
+        
+        .main .center-f li div:first-child+div+div {
+            color: black;
+            background-color: #E4E4E4;
+            height: 20px;
+            line-height: 20px;
+            text-align: right;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .main .center-f li:last-child div:last-child {
+            height: 80px;
+            line-height: 80px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: green;
+        }
+        
+        .main .center-f li:last-child div:last-child:hover {
+            color: green;
+        }
+        
+        .main .adduser-box {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .main .adduser-box .adduser {
+            border: 1px solid #E4E4E4;
+            width: 400px;
+            position: absolute;
+            margin-left: -200px;
+            left: 50%;
+            top: 25%;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 5px black;
+        }
+        
+        .main .adduser-box h2 {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: #E4E4E4;
+            border-bottom: 1px solid black;
+            margin-bottom: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .main .adduser-box form {
+            width: 100%;
+        }
+        
+        .main .adduser-box .form-group:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .main .adduser-box .form-group {
+            width: 360px;
+            margin: 0px auto !important;
+            position: relative;
+            margin-bottom: 15px !important;
+        }
+        
+        .main .adduser-box label {
+            width: 60px;
+            position: absolute;
+            top: 0px;
+        }
+        
+        .main .adduser-box input,
+        .main .adduser-box textarea {
+            display: inline-block;
+            width: 295px;
+            margin-left: 65px;
+            max-width: 295px;
+            min-width: 295px;
+            max-height: 150px;
+        }
+        
+        .main .adduser-box button {
+            width: 295px;
+            margin-left: 65px;
+        }
+        
+        .main .adduser-box .close {
+            display: inline-block;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: black !important;
+            z-index: 1000;
+        }
+    </style>
+    <div class="main clearfix">
+        <div class="adduser-box">
+            <div class="adduser animated fadeInDown">
+                <div class="close">X
+                </div>
+                <form action="" method="POST" class="form-horizontal" role="form">
+
+                    <h2>添加新客户</h2>
+
+                    <div class="form-group">
+                        <label for="" class="control-label">客户姓名</label>
+                        <input type="text" class="form-control" name="" placeholder="请输入客户姓名">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">客户电话</label>
+
+                        <input type="text" class="form-control" name="" placeholder="请输入客户电话">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">其他联系</label>
+
+                        <input type="text" class="form-control" name="" placeholder="输入客户QQ或微信">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">所在城市</label>
+
+                        <input type="text" class="form-control" name="" placeholder="请输入客户户籍所在城市">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">详细备注</label>
+                        <textarea name="" id="" class="form-control" cols="10" rows="10" placeholder="填写用户备注信息，便于业务跟进，回访。"></textarea>
+
+                    </div>
+                    <div class="form-group">
+
+                        <button class="btn btn-success">添加新客户</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="center container">
+                <div class="center-top">
+                    <img src="../static/images/u3.png" alt="">
+                </div>
+                <div class="center-bottom">
+                    <div class="form-group clearfix">
+                        <input type="text" class="form-control" placeholder="搜索客户姓名，电话">
+                        <span onclick="location.href='/search';"><img src="../static/images/search.png" alt=""></span>
+                    </div>
+                </div>
+                <div class="center-f">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="/todayend">
+                                <div>今日到期</div>
+                                <div>11,800</div>
+                                <div>元</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/todayafter">
+                                <div>昨日逾期</div>
+                                <div>1,200</div>
+                                <div>元</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/weekbusiness">
+                                <div>本周客户</div>
+                                <div>25</div>
+                                <div>人</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/monthbusiness">
+                                <div>本月业绩</div>
+                                <div>81,800</div>
+                                <div>元</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/todayend">
+                                <div>今日到期</div>
+                                <div>25</div>
+                                <div>人</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/todayafter">
+                                <div>本月逾期</div>
+                                <div>28,800</div>
+                                <div>元</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/monthbusiness">
+                                <div>本月新客户</div>
+                                <div>74</div>
+                                <div>人</div>
+                            </a>
+                        </li>
+                        <li class="newadd" onclick="addNew()">
+                            <a href="javascript:void(0);">
+                                <div>功能</div>
+                                <div>添加新客户</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include ./p-views/footer.html %>
+        <script>
+            var close = $('.adduser-box .close')[0];
+            close.onclick = function() {
+                $('.adduser-box')[0].style.display = 'none';
+            }
+
+            function addNew() {
+                $('.adduser-box')[0].style.display = 'block';
+            }
+        </script>
+        </body>
+
+        </html>

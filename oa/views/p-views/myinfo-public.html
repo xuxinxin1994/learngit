@@ -1,0 +1,68 @@
+<style>
+    .main-content {
+        margin-top: 10px;
+    }
+    
+    .main-content>div {
+        width: 100%;
+    }
+    
+    .main-content .top {
+        height: 300px;
+        border-bottom: 2px dashed whitesmoke;
+    }
+    
+    .main-content .top .top-bg {
+        height: 200px;
+        background-color: gray;
+    }
+    
+    .main-content .top .top-main {
+        position: relative;
+        height: 100px;
+        border-left: 1px solid whitesmoke;
+        border-right: 1px solid whitesmoke;
+    }
+    
+    .main-content .top .top-main div:first-child {
+        float: left;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: -120px;
+        left: 30px;
+    }
+    
+    .main-content .top .top-main div:first-child img {
+        width: 100%;
+        height: 100%;
+        border: 4px solid ghostwhite;
+        border-radius: 10px;
+    }
+    
+    .main-content .top .top-main div:first-child+div {
+        float: left;
+        margin-left: 240px;
+    }
+    
+    .main-content .top .top-main div:first-child+div span:first-child {
+        font-size: 40px;
+        font-weight: bold;
+    }
+    
+    .main-content .top .top-main div:first-child+div span:first-child+span {
+        display: inline-block;
+        font-size: 20px;
+        margin-left: 20px;
+        color: rgb(50, 16, 241);
+    }
+</style>
+<div class="main">
+    <div class="main-content">
+        <div class="top">
+            <div class="top-bg"></div>
+            <div class="top-main">
+                <div><img src="./static/images/default.jpg" alt=""></div>
+                <div><span>刘德华</span><span>审核员</span></div>
+            </div>
+        </div>

@@ -1,0 +1,346 @@
+<% include ./p-views/header.html %>
+    <style>
+        .main {
+            margin-top: 20px;
+        }
+        
+        .main-content>div {
+            float: left;
+        }
+        
+        .main-content .left {
+            width: 650px;
+            height: 100%;
+            /* border: 1px solid red; */
+        }
+        
+        .main-content .left>div {
+            width: 100%;
+        }
+        
+        .main-content .left .top {
+            height: 50px;
+            line-height: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .main-content .left .top>div {
+            float: left;
+            height: 100%;
+        }
+        
+        .main-content .left .top>div:first-child {
+            width: 160px;
+        }
+        
+        .main-content .left .top>div:first-child+div {
+            width: 470px;
+        }
+        
+        .main-content .left .top>div input {
+            display: inline-block;
+            width: 430px;
+        }
+        
+        .main-content .left .search-title {
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 10px;
+            color: gray;
+        }
+        
+        b {
+            color: black;
+        }
+        
+        .main-content .left .search-title span:first-child {
+            position: absolute;
+            left: 0px;
+            height: 100%;
+        }
+        
+        .main-content .left .search-title span:first-child+span {
+            position: absolute;
+            right: 0px;
+        }
+        
+        .wdq,
+        .wdq a {
+            color: green;
+        }
+        
+        .main-content .left .bottom .new {
+            font-size: 20px;
+            color: green;
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+        
+        .main-content .left .bottom .new span {
+            display: inline-block;
+            height: 100%;
+            font-weight: bold;
+        }
+        
+        .main-content .right {
+            width: 300px;
+            margin-left: 30px;
+        }
+        
+        .main-content .right h4 {
+            background-color: #3FC1C9;
+            color: white;
+            height: 30px;
+            line-height: 30px;
+            margin: 0px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .main-content .right>div>div {
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
+        /* 添加新客户 */
+        
+        .main .adduser-box {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .main .adduser-box .adduser {
+            border: 1px solid #E4E4E4;
+            width: 400px;
+            position: absolute;
+            margin-left: -200px;
+            left: 50%;
+            top: 10%;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 5px black;
+        }
+        
+        .main .adduser-box h2 {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: #E4E4E4;
+            border-bottom: 1px solid black;
+            margin-bottom: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .main .adduser-box form {
+            width: 100%;
+        }
+        
+        .main .adduser-box .form-group:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .main .adduser-box .form-group {
+            width: 360px;
+            margin: 0px auto !important;
+            position: relative;
+            margin-bottom: 15px !important;
+        }
+        
+        .main .adduser-box label {
+            width: 60px;
+            position: absolute;
+            top: 0px;
+        }
+        
+        .main .adduser-box input,
+        .main .adduser-box textarea {
+            display: inline-block;
+            width: 295px;
+            margin-left: 65px;
+            max-width: 295px;
+            min-width: 295px;
+            max-height: 150px;
+        }
+        
+        .main .adduser-box button {
+            width: 295px;
+            margin-left: 65px;
+        }
+        
+        .main .adduser-box .close {
+            display: inline-block;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: black !important;
+            z-index: 1000;
+        }
+    </style>
+    <div class="main">
+        <div class="main-content clearfix">
+            <div class="left">
+                <div class="top clearfix">
+                    <div><img src="./static/images/u251.png" alt=""></div>
+                    <div>
+                        <input type="text" class="form-control"><img src="./static/images/u1.png" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="search-title"><span>关于“李四”的搜索结果</span><span>共 <b>2</b> 条</span></div>
+                    <div class="search-table">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>客户编号</th>
+                                    <th>姓名</th>
+                                    <th>电话</th>
+                                    <th>最早办理日期</th>
+                                    <th>办理次数</th>
+                                    <th>当前金额</th>
+                                    <th>当前状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="wdq">
+                                    <td>8231</td>
+                                    <td><a href="">李四</a></td>
+                                    <td>158888888</td>
+                                    <td>2017-12-01</td>
+                                    <td>1</td>
+                                    <td>1000</td>
+                                    <td>未到期</td>
+                                </tr>
+                                <tr>
+                                    <td>11101</td>
+                                    <td><a href="">李四</a></td>
+                                    <td>1542323188</td>
+                                    <td>2017-6-01</td>
+                                    <td>1</td>
+                                    <td>1000</td>
+                                    <td>正常</td>
+                                </tr>
+                                <tr class="wdq">
+                                    <td>8231</td>
+                                    <td><a href="">李四</a></td>
+                                    <td>158888888</td>
+                                    <td>2017-12-01</td>
+                                    <td>1</td>
+                                    <td>1000</td>
+                                    <td>未到期</td>
+                                </tr>
+                                <tr>
+                                    <td>11101</td>
+                                    <td><a href="">李四</a></td>
+                                    <td>1542323188</td>
+                                    <td>2017-6-01</td>
+                                    <td>1</td>
+                                    <td>1000</td>
+                                    <td>正常</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="new" onclick="addNew()">
+                        <img src="./static/images/u301.png" alt=""><span>&nbsp;添加新客户</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="top">
+                    <h4>团队业绩排行榜</h4>
+                    <div>
+                        <img src="./static/images/u202.png" alt=""><span>张学友：839000</span>
+                    </div>
+                    <div>
+                        <img src="./static/images/u204.png" alt=""><span>刘德华：830000</span>
+                    </div>
+                    <div>
+                        <img src="./static/images/u206.png" alt=""><span>郭富城：820000</span>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <h4>新客户排行榜</h4>
+                    <div>
+                        <img src="./static/images/u202.png" alt=""><span>张学友：839000</span>
+                    </div>
+                    <div>
+                        <img src="./static/images/u204.png" alt=""><span>刘德华：830000</span>
+                    </div>
+                    <div>
+                        <img src="./static/images/u206.png" alt=""><span>郭富城：820000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="adduser-box">
+            <div class="adduser animated fadeInDown">
+                <div class="close">X
+                </div>
+                <form class="form-horizontal">
+
+                    <h2>添加新客户</h2>
+
+                    <div class="form-group">
+                        <label for="" class="control-label">客户姓名</label>
+                        <input type="text" class="form-control" name="" placeholder="请输入客户姓名">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">客户电话</label>
+
+                        <input type="text" class="form-control" name="" placeholder="请输入客户电话">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">其他联系</label>
+
+                        <input type="text" class="form-control" name="" placeholder="输入客户QQ或微信">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">所在城市</label>
+
+                        <input type="text" class="form-control" name="" placeholder="请输入客户户籍所在城市">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">详细备注</label>
+                        <textarea name="" id="" class="form-control" cols="10" rows="10" placeholder="填写用户备注信息，便于业务跟进，回访。"></textarea>
+
+                    </div>
+                    <div class="form-group">
+
+                        <button class="btn btn-success">添加新客户</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var close = $('.adduser .close')[0];
+        close.onclick = function() {
+            $('.adduser-box')[0].style.display = 'none';
+        }
+
+        function addNew() {
+            $('.adduser-box')[0].style.display = 'block';
+        }
+    </script>
+    </body>
+
+    </html>

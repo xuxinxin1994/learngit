@@ -1,0 +1,584 @@
+<% include ./p-views/header.html %>
+    <style>
+        .main-content .top h1 {
+            font-size: 50px !important;
+            text-align: center;
+        }
+        
+        .main-content .center-top {
+            height: 35px;
+            line-height: 35px;
+            font-size: 16px;
+            border-bottom: 1px solid black;
+        }
+        
+        .main-content .center-top li {
+            margin-right: 20px;
+        }
+        
+        .main-content .center-top li img {
+            margin-right: 5px;
+        }
+        
+        .main-content .center-top li img,
+        .main-content .center-top li span {
+            display: inline-block;
+            height: 20px;
+        }
+        /* 未到期 */
+        
+        .wdq {
+            color: green;
+        }
+        
+        .wdq span {
+            font-weight: bold;
+        }
+        
+        .main-content .center-c {
+            margin-top: 10px;
+            border-bottom: 1px solid black;
+            /* color: white; */
+            margin-bottom: 20px;
+        }
+        
+        .main-content .center-c li {
+            margin-right: 10px;
+        }
+        
+        .main-content .center-c .yh {
+            margin-bottom: 20px;
+        }
+        
+        .main-content .center-c li button:hover {
+            color: white !important;
+        }
+        
+        .main-content .yw ul {
+            float: right;
+            margin-bottom: 10px;
+        }
+        
+        .main-content .yw ul li:first-child+li+li button {
+            background-color: purple !important;
+            color: white;
+        }
+        
+        .main-content .yw ul li:first-child+li+li+li button {
+            background-color: black !important;
+            color: white;
+        }
+        
+        .main-content .center-bottom h2 {
+            text-align: left;
+        }
+        
+        .main-content .center-bottom .bz {
+            padding-left: 120px;
+        }
+        
+        .main-content .center-bottom .xq {
+            text-align: right;
+        }
+        
+        .main-content .center-bottom .xq button {
+            background-color: rgb(250, 115, 139);
+            color: white;
+        }
+        /* 关闭按钮 */
+        
+        .close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            color: white !important;
+        }
+        
+        .addDetail-box,
+        .jiekuan-box,
+        .huankuan-box,
+        .xuqi-box,
+        .cuishou-box {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        /* .cuishou-box {
+            display: block;
+        } */
+        
+        .addDetail-box .addDetail,
+        .jiekuan-box .jiekuan,
+        .huankuan-box .huankuan,
+        .xuqi-box .xuqi,
+        .cuishou-box .cuishou {
+            width: 400px;
+            background-color: white;
+            position: absolute;
+            margin-left: -200px;
+            left: 50%;
+            top: 10%;
+            border-radius: 10px;
+        }
+        
+        .addDetail-box h2,
+        .jiekuan-box h2,
+        .huankuan-box h2,
+        .xuqi-box h2,
+        .cuishou-box h2 {
+            height: 50px;
+            line-height: 50px;
+            background-color: #515151;
+            color: white;
+            border-bottom: 1px solid black;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+        
+        .addDetail-box .addDetail form,
+        .jiekuan-box form,
+        .huankuan form,
+        .xuqi form,
+        .cuishou form {
+            padding: 10px 15px 20px;
+        }
+        
+        .addDetail-box .addDetail form .form-group,
+        .jiekuan-box form .form-group,
+        .huankuan-box form .form-group,
+        .xuqi form .form-group,
+        .cuishou form .form-group {
+            position: relative;
+        }
+        
+        .addDetail-box .addDetail label,
+        .jiekuan-box label,
+        .huankuan-box label,
+        .xuqi-box label,
+        .cuishou-box label {
+            position: absolute;
+            top: 0px;
+            width: 60px;
+        }
+        
+        .addDetail-box .addDetail input,
+        .addDetail-box .addDetail textarea,
+        .jiekuan-box input,
+        .jiekuan-box textarea,
+        .jiekuan-box select,
+        .huankuan-box input,
+        .huankuan-box textarea,
+        .huankuan-box select,
+        .xuqi-box input,
+        .xuqi-box textarea,
+        .xuqi-box select,
+        .cuishou-box input,
+        .cuishou-box textarea {
+            display: inline-block;
+            width: 300px;
+            margin-left: 65px;
+        }
+        
+        .addDetail-box .addDetail textarea,
+        .jiekuan-box textarea,
+        .huankuan-box textarea,
+        .xuqi-box textarea .cuishou-box textarea {
+            max-width: 300px;
+            min-width: 300px;
+            max-height: 200px;
+            min-height: 200px;
+        }
+        /* .jiekuan-box select,
+        .huankuan-box select {
+            width: 300px;
+        } */
+        
+        .addDetail-box .addDetail button,
+        .jiekuan-box button,
+        .huankuan-box button,
+        .xuqi-box button,
+        .cuishou-box button {
+            margin-left: 65px;
+            width: 300px;
+        }
+        
+        .addDetail-box button {
+            background-color: rgb(250, 115, 139);
+            color: white;
+        }
+        
+        .addDetail-box button:hover {
+            color: white;
+        }
+        
+        .xuqi-box button {
+            background-color: purple;
+            color: white;
+        }
+        
+        .xuqi-box button:hover,
+        .cuishou-box button:hover {
+            color: white;
+        }
+        
+        .cuishou-box button {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <div class="main">
+        <div class="main-content">
+            <div class="top">
+                <h1><img src="./static/images/u1927.png" alt=""><span>Andy</span></h1>
+            </div>
+            <div class="center">
+                <div class="center-top">
+                    <ul class="clearfix">
+                        <li>
+                            <img src="./static/images/u1939.png" alt=""><span>15888888888</span>
+                        </li>
+                        <li>
+                            <img src="./static/images/u1941.png" alt=""><span>刘德华</span>
+                        </li>
+                        <li class="wdq">
+                            <img src="./static/images/u1943.png" alt=""><span>未到期</span>
+                        </li>
+                        <li>
+                            <img src="./static/images/u1947.png" alt=""><span>4次</span>
+                        </li>
+                        <li>
+                            <img src="./static/images/u1951.png" alt=""><span>9000元</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="center-c">
+                    <div class="yh">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>金额</th>
+                                    <th>手续费</th>
+                                    <th>平台</th>
+                                    <th>完结状态</th>
+                                    <th>还款金额</th>
+                                    <th>还款日期</th>
+                                    <th>延期备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2017-12-07</td>
+                                    <td>1000</td>
+                                    <td>100</td>
+                                    <td>淘宝</td>
+                                    <td>否</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2017-11-07</td>
+                                    <td>1000</td>
+                                    <td>100</td>
+                                    <td>淘宝</td>
+                                    <td>是</td>
+                                    <td>1000</td>
+                                    <td>2017-12-07</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2017-11-07</td>
+                                    <td>1000</td>
+                                    <td>100</td>
+                                    <td>京东</td>
+                                    <td>是</td>
+                                    <td>1000</td>
+                                    <td>2017-1-07</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="yw clearfix">
+                        <ul class="clearfix">
+                            <li>
+                                <button type="button" class="btn btn-success" onclick="jiekuan()">办理借款</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-danger" onclick="huankuan()">办理还款</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn" onclick="xuqi()">办理续期</button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn" onclick="cuishou()">移交催收</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="center-bottom">
+                    <h2>备注详情</h2>
+                    <div class="bz">
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                        <p>12月21号，你打开了解到来看大神快来打哈是可敬的那可是件大事科技大厦昆仑决好 </p>
+                    </div>
+                    <div class="xq">
+                        <button type="button" class="btn" onclick="addDetail()">增加详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 增加详情 -->
+        <div class="addDetail-box">
+            <div class="addDetail animated fadeInDown">
+                <div class="close">X</div>
+                <h2>增加跟进详情</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户姓名</label>
+                        <input type="text" class="form-control" id="" disabled value="Andy">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户电话</label>
+                        <input type="text" class="form-control" id="" disabled value="158888888">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">详情备注</label>
+                        <textarea name="" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn">提交跟进记录</button>
+                </form>
+
+            </div>
+        </div>
+        <!-- 办理借款 -->
+        <div class="jiekuan-box">
+            <div class="jiekuan  animated fadeInDown">
+                <div class="close">X</div>
+                <h2>办理借款</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户姓名</label>
+                        <input type="text" class="form-control" id="" disabled value="Andy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户电话</label>
+                        <input type="text" class="form-control" id="" disabled value="158888888">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">业务员</label>
+                        <input type="text" class="form-control" id="" disabled value="刘德华">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">借款金额</label>
+                        <input type="number" class="form-control" style="width:280px !important;">&nbsp;元
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">手续费</label>
+                        <input type="number" class="form-control" style="width:280px !important;">&nbsp;元
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">平台</label>
+                        <select name="" class="form-control">
+                                <option value="">支付宝</option>
+                                <option value="">微信云</option>
+                                <option value="">阿里云</option>
+                                <option value="">百度云</option>
+                                <option value="">海宝云</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">详情备注</label>
+                        <textarea name="" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn btn-success">提交借款</button>
+                </form>
+            </div>
+        </div>
+        <!-- 办理还款 -->
+        <div class="huankuan-box">
+            <div class="huankuan  animated fadeInDown">
+                <div class="close">X</div>
+                <h2>办理还款</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户姓名</label>
+                        <input type="text" class="form-control" id="" disabled value="Andy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户电话</label>
+                        <input type="text" class="form-control" id="" disabled value="158888888">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">业务员</label>
+                        <input type="text" class="form-control" id="" disabled value="刘德华">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">还款金额</label>
+                        <input type="number" class="form-control" style="width:280px !important;">&nbsp;元
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="" class="contol-label">手续费</label>
+                        <input type="number" class="form-control" id="">
+                    </div> -->
+                    <div class="form-group">
+                        <label for="" class="contol-label">收款方式</label>
+                        <select name="" class="form-control">
+                                    <option value="">支付宝</option>
+                                    <option value="">微信</option>
+                                    <option value="">银行卡</option>
+                                </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">还款备注</label>
+                        <textarea name="" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">消除合同</label>
+                        <input type="radio" name="ht" style="width:30px;">是
+                        <input type="radio" name="ht" style="width:30px;">否
+                    </div>
+                    <button class="btn btn-danger">提交借款</button>
+                </form>
+            </div>
+        </div>
+        <!-- 办理续期 -->
+        <div class="xuqi-box">
+            <div class="xuqi  animated fadeInDown">
+                <div class="close">X</div>
+                <h2>办理还款</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户姓名</label>
+                        <input type="text" class="form-control" id="" disabled value="Andy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户电话</label>
+                        <input type="text" class="form-control" id="" disabled value="158888888">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">业务员</label>
+                        <input type="text" class="form-control" id="" disabled value="刘德华">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">展期金额</label>
+                        <input type="number" class="form-control" style="width:280px !important;">&nbsp;元
+                    </div>
+                    <!-- <div class="form-group">
+                            <label for="" class="contol-label">手续费</label>
+                            <input type="number" class="form-control" id="">
+                        </div> -->
+                    <div class="form-group">
+                        <label for="" class="contol-label">收款方式</label>
+                        <select name="" class="form-control">
+                                        <option value="">支付宝</option>
+                                        <option value="">微信</option>
+                                        <option value="">银行卡</option>
+                                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">还款备注</label>
+                        <textarea name="" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn">提交展期</button>
+                </form>
+            </div>
+        </div>
+        <!-- 移交催收 -->
+        <div class="cuishou-box">
+            <div class="cuishou animated fadeInDown">
+                <div class="close">X</div>
+                <h2>移交催收</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户姓名</label>
+                        <input type="text" class="form-control" id="" disabled value="Andy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="contol-label">客户电话</label>
+                        <input type="text" class="form-control" id="" disabled value="158888888">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">业务员</label>
+                        <input type="text" class="form-control" id="" disabled value="刘德华">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">借款金额</label>
+                        <input type="number" class="form-control" disabled value="2000" style="width:280px !important;">&nbsp;元
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">办理日期</label>
+                        <input type="text" class="form-control" disabled value="2017-11-05">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="contol-label">当前逾期</label>
+                        <input type="number" class="form-control" disabled value="16" style="width:280px !important;">&nbsp;天
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">补充备注</label>
+                        <textarea name="" class="form-control" cols="30" rows="10">
+                            填写用户当前状态，便于催收跟进
+                        </textarea>
+                    </div>
+                    <button class="btn">移交催收</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% include ./p-views/footer.html%>
+        <script>
+            // 增加详情
+            function addDetail() {
+                $('.addDetail-box')[0].style.display = "block";
+            }
+            $('.addDetail-box .close')[0].onclick = function() {
+                    $('.addDetail-box')[0].style.display = "none";
+                }
+                // 办理借款
+            function jiekuan() {
+                $('.jiekuan-box')[0].style.display = "block";
+            }
+            $('.jiekuan-box .close')[0].onclick = function() {
+                    $('.jiekuan-box')[0].style.display = "none";
+                }
+                // 办理还款
+            function huankuan() {
+                $('.huankuan-box')[0].style.display = "block";
+            }
+            $('.huankuan-box .close')[0].onclick = function() {
+                    $('.huankuan-box')[0].style.display = "none";
+                }
+                // 办理续期
+            function xuqi() {
+                $('.xuqi-box')[0].style.display = "block";
+            }
+            $('.xuqi-box .close')[0].onclick = function() {
+                    $('.xuqi-box')[0].style.display = "none";
+                }
+                // 移交催收
+            function cuishou() {
+                $('.cuishou-box')[0].style.display = 'block';
+            }
+            $('.cuishou-box .close')[0].onclick = function() {
+                $('.cuishou-box')[0].style.display = 'none';
+            }
+        </script>
+        </body>
+
+        </html>

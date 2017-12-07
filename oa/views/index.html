@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../libs/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../libs/animate/animate.css">
+    <link rel="stylesheet" href="../static/css/public.css">
+    <script src="../libs/jquery.3.2.1/jquery.min.js"></script>
+    <title>以太OA</title>
+    <style>
+        .header-meau {
+            height: 100%;
+            line-height: 60px;
+        }
+        
+        li {
+            list-style: none;
+            float: right;
+            line-height: normal;
+            height: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .main-content {
+            text-align: center;
+        }
+        
+        .main-content .center {
+            width: 500px;
+            margin: 0px auto;
+            padding-top: 50px;
+        }
+        
+        .main-content .center>div {
+            margin-bottom: 50px;
+        }
+        
+        .main-content .center-top img {
+            width: 100%;
+        }
+        
+        .main-content .center .center-bottom {
+            position: relative;
+            height: 60px;
+        }
+        
+        .main-content .center .center-bottom span,
+        .main-content .center .center-bottom input {
+            position: absolute;
+        }
+        
+        .main-content .center .center-bottom input {
+            width: 435px !important;
+        }
+        
+        .main-content .center .center-bottom span {
+            right: 0px;
+            cursor: pointer;
+        }
+        
+        .login-box {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .login {
+            width: 400px;
+            margin: 0 auto;
+            border: 1px solid #797979;
+            border-radius: 10px;
+            padding-bottom: 20px;
+            /* display: none; */
+            position: absolute;
+            margin-left: -200px;
+            left: 50%;
+            top: 20%;
+            background-color: white;
+        }
+        
+        .login form {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .login .close {
+            position: absolute;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            top: 5px;
+            right: 5px;
+        }
+        
+        .login .form-group {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+        
+        .login h4 {
+            text-align: center;
+            width: 100%;
+            background-color: #E4E4E4;
+            height: 50px;
+            line-height: 50px;
+            margin: 0px;
+            margin-bottom: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: 1px solid black;
+        }
+        
+        .login label {
+            width: 60px;
+        }
+        
+        .login input {
+            display: inline-block;
+            width: 300px;
+        }
+        
+        a.btn {
+            background-color: pink;
+            width: 200px;
+            margin-left: 100px;
+            color: white;
+        }
+        
+        a.btn:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-meau">
+                <ul class="clearfix">
+                    <li class="dl">
+                        <img src="../static/images/user.png" alt=""><br>
+                        <span>未登录</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="login-box">
+        <div class="login">
+
+            <form method="POST" role="form" class="form-horizontal">
+
+                <h4>登录</h4>
+                <div class="close">X</div>
+                <div class="form-group">
+                    <label for="" class="control-label">账号：</label>
+                    <input type="text" class="form-control" id="" placeholder="请输入您的账号">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">密码：</label>
+                    <input type="text" class="form-control" id="" placeholder="请输入密码">
+                </div>
+                <!-- <button type="button" class="btn" style="background-color:pink;width:200px;margin-left:55px;">登录</button> -->
+                <a href="/main" class="btn">登录</a>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="main clearfix">
+        <div class="main-content">
+            <div class="center container">
+                <div class="center-top">
+                    <img src="../static/images/u3.png" alt="">
+                </div>
+                <div class="center-bottom">
+                    <div class="form-group clearfix">
+                        <input type="text" class="form-control" placeholder="搜索客户姓名，电话">
+                        <span><img src="../static/images/search.png" alt=""></span>
+                    </div>
+                </div>
+                <div class="center-f">
+                    <h2>欢迎使用以太OA金融系统</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <p>更多信息欢迎访问以太数据</p>
+        </div>
+    </div>
+    <% include ./p-views/footer.html %>
+        <script>
+            var dl = $('.dl')[0];
+            dl.onclick = function() {
+                $('.login-box')[0].style.display = 'block';
+            }
+            $('.close')[0].onclick = function() {
+                $('.login-box')[0].style.display = 'none';
+            }
+        </script>
+</body>
+
+</html>

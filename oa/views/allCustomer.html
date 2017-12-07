@@ -1,0 +1,136 @@
+<% include ./p-views/header.html %>
+    <style>
+        .main-content .top ul {
+            height: 40px;
+            line-height: 40px;
+        }
+        
+        .main-content .top li {
+            width: 130px;
+            cursor: pointer;
+        }
+        
+        .main-content .top li a {
+            text-decoration: none;
+        }
+        /* 正常用户 */
+        
+        .zc,
+        .zc a {
+            color: #3CDD40;
+        }
+        /* 到期 */
+        
+        .dq,
+        .dq a {
+            color: #FF7954;
+        }
+        /* 逾期 */
+        
+        .yq,
+        .yq a {
+            color: red;
+        }
+        /* 黑名单 */
+        
+        .hmd,
+        .hmd a {
+            color: black;
+        }
+        
+        .main-content .bottom {
+            margin-top: 10px;
+        }
+    </style>
+    <div class="main">
+        <div class="main-content">
+            <h1>我的所有客户</h1>
+            <div class="top">
+                <ul class="clearfix">
+                    <li class="zc">
+                        <a>
+                            <img src="./static/images/u1782.png" alt="">正常用户
+                        </a>
+                    </li>
+                    <li class="dq">
+                        <a>
+                            <img src="./static/images/u916.png" alt="">今日到期
+                        </a>
+                    </li>
+                    <li class="yq">
+                        <a>
+                            <img src="./static/images/u920.png" alt="">逾期客户
+                        </a>
+                    </li>
+                    <li class="hmd">
+                        <a>
+                            <img src="./static/images/u1794.png" alt="">黑名单
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom">
+
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>客户编号</th>
+                            <th>客户姓名</th>
+                            <th>电话</th>
+                            <th>最早办理日期</th>
+                            <th>办理次数</th>
+                            <th>当前金额</th>
+                            <th>当前状态</th>
+                            <th>业务记录</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="zc">
+                            <td>00001</td>
+                            <td><a href="">Andy</a></td>
+                            <td>180*****3517</td>
+                            <td>2017-02-01</td>
+                            <td>1</td>
+                            <td>1000</td>
+                            <td>3天后到期</td>
+                            <td></td>
+                        </tr>
+                        <tr class="dq">
+                            <td>00002</td>
+                            <td><a href="">Mike</a></td>
+                            <td>130*****3517</td>
+                            <td>2017-03-01</td>
+                            <td>2</td>
+                            <td>1000</td>
+                            <td>今日到期</td>
+                            <td></td>
+                        </tr>
+                        <tr class="yq">
+                            <td>00003</td>
+                            <td><a href="">July</a></td>
+                            <td>180*****3017</td>
+                            <td>2017-02-01</td>
+                            <td>3</td>
+                            <td>1000</td>
+                            <td>逾期1天</td>
+                            <td></td>
+                        </tr>
+                        <tr class="hmd">
+                            <td>00041</td>
+                            <td><a href="">anli</a></td>
+                            <td>189*****3517</td>
+                            <td>2017-05-01</td>
+                            <td>1</td>
+                            <td>1000</td>
+                            <td>已移交催收</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    </body>
+
+    </html>
